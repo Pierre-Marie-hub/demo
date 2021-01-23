@@ -420,5 +420,13 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+        'cookie' => 'my_app',
+        'ini' => [
+            'session.cookie_name' => 'MyCookie',
+            'session.cookie_lifetime' => 1800, // Valide pour 30 minutes
+            'session.gc_divisor' => 1000,
+            'session.cookie_httponly' => true
+        ],
+        'timeout' => 1 // 3 days
     ],
 ];
