@@ -26,6 +26,7 @@ use Cake\Http\Client\Request;
 use Cake\Http\Middleware\BodyParserMiddleware;
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Http\MiddlewareQueue;
+use Cake\Http\Session;
 use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
@@ -64,7 +65,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 (new TableLocator())->allowFallbackClass(false)
             );
         }
-
+        if(!isset($_SESSION)) session_start();
         /*
          * Only try to load DebugKit in development mode
          * Debug Kit should not be installed on a production system
@@ -76,7 +77,13 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // Load more plugins here
         $this->addPlugin('Authentication');
 
-        dump($this, $_COOKIE, $_ENV, $_SERVER, $_REQUEST, $_SERVER['REMOTE_ADDR']);
+        //Session
+        $session = Session::create();
+        $session = (!isset($_SESSION))? session_start(): $session;
+
+        $session->write('client.ip', $_SESSION['REMOTE_ADDR']);
+        dump($this,$session);
+        dump($this, $_SESSION);
     }
 
     /**
