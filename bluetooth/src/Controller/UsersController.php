@@ -106,6 +106,7 @@ class UsersController extends AppController
     // in src/Controller/UsersController.php
     public function login()
     {
+
         $result = $this->Authentication->getResult();
         // If the user is logged in send them away.
         if ($result->isValid()) {
@@ -115,6 +116,7 @@ class UsersController extends AppController
         if ($this->request->is('post') && !$result->isValid()) {
             $this->Flash->error('Invalid username or password');
         }
+
     }
 
     // in src/Controller/UsersController.php

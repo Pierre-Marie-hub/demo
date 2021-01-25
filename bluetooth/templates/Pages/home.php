@@ -28,7 +28,7 @@ if (!Configure::read('debug')) :
     );
 endif;
 
-$cakeDescription = 'CakePHP: the rapid development PHP framework';
+$cakeDescription = 'mon-petit-cahier.fr';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home']) ?>
 
     <?= $this->fetch('meta') ?>
@@ -52,11 +52,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 <body>
     <header>
         <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
-                <img alt="CakePHP" src="https://cakephp.org/v2/img/logos/CakePHP_Logo.svg" width="350" />
-            </a>
             <h1>
-                Welcome to CakePHP <?php echo Configure::version() ?> Strawberry (🍓)
+                Welcome to a short demo of CakePHP <?php echo Configure::version() ?> Strawberry (🍓) with GoogleChart
             </h1>
         </div>
     </header>
@@ -66,154 +63,82 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                 <div class="row">
                     <div class="column">
                         <div class="message default text-center">
-                            <small>Please be aware that this page will not be shown if you turn off debug mode unless you replace templates/Pages/home.php with your own version.</small>
+                            <small>This dashboard is made with dummy data</small>
                         </div>
-                        <!-- <div id="url-rewriting-warning" class="alert url-rewriting">
+                        <div id="url-rewriting-warning" class="alert url-rewriting">
                             <ul>
                                 <li class="bullet problem">
-                                    URL rewriting is not properly configured on your server.<br />
-                                    1) <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/installation.html#url-rewriting">Help me configure it</a><br />
-                                    2) <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
+                                    Source code is here <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/installation.html#url-rewriting">Project's Github</a><br />
                                 </li>
                             </ul>
-                        </div> -->
+                        </div>
                         <?php Debugger::checkSecurityKeys(); ?>
                     </div>
                 </div>
+                <div id="chart_div" style="width: 100%; min-height: 400px;"></div>
                 <div class="row">
                     <div class="column">
                         <h4>Environment</h4>
                         <ul>
-                        <?php if (version_compare(PHP_VERSION, '7.2.0', '>=')) : ?>
-                            <li class="bullet success">Your version of PHP is 7.2.0 or higher (detected <?php echo PHP_VERSION ?>).</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP is too low. You need PHP 7.2.0 or higher to use CakePHP (detected <?php echo PHP_VERSION ?>).</li>
-                        <?php endif; ?>
+                            The ICO composite indicator in December increased by 4.6% to 114.74 US cents/lb as prices for Arabica group indicators increased. The largest increase occurred for Brazilian Naturals, which grew by 8% to 114.96 US cents/lb, which is the highest monthly average since December 2019 when they reached 126.36 US cents/lb. Colombian Milds rose by 5.7% to 170.44 US cents/lb and Other Milds by 4.7% to 157.81 US cents/lb, which are both higher than their average in December 2019. However, prices for Robusta fell by 0.5% to 72.04 US cents/lb. In the first two months of coffee year 2020/21, total exports were 6.5% higher at 20.2 million bags compared to the same period last year as shipments for all groups declined except Brazilian Naturals, which rose by 23.1% to 8.31 million bags. Likely due to the impact of the covid-19 pandemic, imports by ICO importing Members and the United States decreased by 4.5% to 129.98 million bags in coffee year 2019/20. While both green and roasted imports declined in coffee year 2019/20, imports of soluble coffee increased by 1% to 14.4 million bags. In coffee year 2019/20, re-exports by ICO importing Members and the United States rose by 0.4% to 46.93 million bags.
+                        </ul>
+                        <div class="column">
+                            <h4>More info...</h4>
+                            • World coffee exports amounted to 10.15 million bags in November 2020, compared with 9.6 million in November 2019.
+                            • Exports in the first 2 months of coffee year 2020/21 (Oct/20 to Nov/20) have increased by 6.5% to 20.2 million bags compared to 18.97 million bags in the same period in 2019/20.
+                            • In the twelve months ending November 2020, exports of Arabica totalled 79.81 million bags compared to 83.01 million bags last year; whereas Robusta exports amounted to 48.66 million bags compared to 48.72 million bags.
+                        </div>
+                    </div>
+                    <div class="column ">
+                        <h4>About ICO</h4>
+                        <ul><p>
+                            The International Coffee Organization (ICO) is the main intergovernmental organization for coffee, bringing together exporting and importing governments to tackle the challenges facing the world coffee sector through international cooperation. Its Member governments represent 98% of world coffee production and 67% of world consumption.
 
-                        <?php if (extension_loaded('mbstring')) : ?>
-                            <li class="bullet success">Your version of PHP has the mbstring extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the mbstring extension loaded.</li>
-                        <?php endif; ?>
+                            The ICO’s mission is to strengthen the global coffee sector and promote its sustainable expansion in a market-based environment for the betterment of all participants in the coffee sector. It makes a practical contribution to the development of a sustainable world coffee sector and to reducing poverty in developing countries by:
 
-                        <?php if (extension_loaded('openssl')) : ?>
-                            <li class="bullet success">Your version of PHP has the openssl extension loaded.</li>
-                        <?php elseif (extension_loaded('mcrypt')) : ?>
-                            <li class="bullet success">Your version of PHP has the mcrypt extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</li>
-                        <?php endif; ?>
+                            Enabling governments and the private sector to exchange views on coffee matters, market conditions and trends, and coordinate policies at high-level meetings
 
-                        <?php if (extension_loaded('intl')) : ?>
-                            <li class="bullet success">Your version of PHP has the intl extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
-                        <?php endif; ?>
+                            Developing and seeking finance for projects that benefit the world coffee economy
+
+                            Promoting coffee quality through a Coffee Quality-Improvement Programme
+
+                            Promoting market transparency by providing a wide range of statistics on the world coffee sector
+
+                            Developing coffee consumption and markets for coffee through innovative market development activities
+
+                            Encouraging the development of strategies to enhance the capacity of local communities and small-scale farmers
+
+                            Promoting training and information programmes to assist the transfer of technology relevant to coffee
+
+                            Facilitating information on financial tools and services to assist producers
+
+                            Providing objective and comprehensive economic, technical and scientific information on the world coffee sector.
+
+                            ​
+
+                            The ICO was set up in London in 1963 under the auspices of the United Nations because of the great economic importance of coffee. It administers the International Coffee Agreement (ICA), an important instrument for development cooperation. The latest Agreement, the ICA 2007, entered into force on 2 February 2011.
+                        </p>
                         </ul>
                     </div>
+                </div>
+                <hr>
+                <div class="row">
+
                     <div class="column">
-                        <h4>Filesystem</h4>
+                        <h4>See you soon</h4>
                         <ul>
-                        <?php if (is_writable(TMP)) : ?>
-                            <li class="bullet success">Your tmp directory is writable.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your tmp directory is NOT writable.</li>
-                        <?php endif; ?>
+                            <li class="bullet success">Thanks for visiting our website</li>
+                            <li class="bullet success">
+                                <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/tutorials-and-examples/cms/installation.html">Contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
 
-                        <?php if (is_writable(LOGS)) : ?>
-                            <li class="bullet success">Your logs directory is writable.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your logs directory is NOT writable.</li>
-                        <?php endif; ?>
-
-                        <?php $settings = Cache::getConfig('_cake_core_'); ?>
-                        <?php if (!empty($settings)) : ?>
-                            <li class="bullet success">The <em><?php echo $settings['className'] ?>Engine</em> is being used for core caching. To change the config edit config/app.php</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your cache is NOT working. Please check the settings in config/app.php</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column">
-                        <h4>Database</h4>
-                        <?php
-                        try {
-                            $connection = ConnectionManager::get('default');
-                            $connected = $connection->connect();
-                        } catch (Exception $connectionError) {
-                            $connected = false;
-                            $errorMsg = $connectionError->getMessage();
-                            if (method_exists($connectionError, 'getAttributes')) :
-                                $attributes = $connectionError->getAttributes();
-                                if (isset($errorMsg['message'])) :
-                                    $errorMsg .= '<br />' . $attributes['message'];
-                                endif;
-                            endif;
-                        }
-                        ?>
-                        <ul>
-                        <?php if ($connected) : ?>
-                            <li class="bullet success">CakePHP is able to connect to the database.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?php echo $errorMsg ?></li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>DebugKit</h4>
-                        <ul>
-                        <?php if (Plugin::isLoaded('DebugKit')) : ?>
-                            <li class="bullet success">DebugKit is loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">DebugKit is NOT loaded. You need to either install pdo_sqlite, or define the "debug_kit" connection name.</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Getting Started</h3>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/">CakePHP Documentation</a>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/tutorials-and-examples/cms/installation.html">The 20 min CMS Tutorial</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Help and Bug Reports</h3>
-                        <a target="_blank" rel="noopener" href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-                        <a target="_blank" rel="noopener" href="http://cakesf.herokuapp.com/">Slack</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                        <a target="_blank" rel="noopener" href="http://discourse.cakephp.org/">CakePHP Forum</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Docs and Downloads</h3>
-                        <a target="_blank" rel="noopener" href="https://api.cakephp.org/">CakePHP API</a>
-                        <a target="_blank" rel="noopener" href="https://bakery.cakephp.org">The Bakery</a>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/">CakePHP Documentation</a>
-                        <a target="_blank" rel="noopener" href="https://plugins.cakephp.org">CakePHP plugins repo</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/cakephp/">CakePHP Code</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
-                        <a target="_blank" rel="noopener" href="https://www.cakephp.org">CakePHP</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Training and Certification</h3>
-                        <a target="_blank" rel="noopener" href="https://cakefoundation.org/">Cake Software Foundation</a>
-                        <a target="_blank" rel="noopener" href="https://training.cakephp.org/">CakePHP Training</a>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 </body>
+<?= $this->Html->script('chart'); ?>
 </html>

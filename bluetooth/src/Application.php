@@ -36,6 +36,7 @@ use Authentication\AuthenticationServiceProviderInterface;
 use Authentication\Identifier\IdentifierInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
 use Cake\Routing\Router;
+use http\Client;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -77,13 +78,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // Load more plugins here
         $this->addPlugin('Authentication');
 
-        //Session
-        $session = Session::create();
-        $session = (!isset($_SESSION))? session_start(): $session;
-
-        $session->write('client.ip', $_SESSION['REMOTE_ADDR']);
-        dump($this,$session);
-        dump($this, $_SESSION);
     }
 
     /**

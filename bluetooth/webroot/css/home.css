@@ -12,6 +12,7 @@
 }
 body {
     padding: 60px 0;
+    text-align:justify !important;
 }
 header {
     margin-bottom: 60px;
