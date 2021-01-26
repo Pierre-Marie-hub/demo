@@ -3,14 +3,14 @@ google.charts.setOnLoadCallback(drawVisualization);
 
 function drawVisualization() {
 
+    //call data todo : authentication
     var tmp = $.ajax({
         url:"productions/get",
         method:"get",
         dataType : "json",
         success:function(data)
         {
-
-
+            //prepare data
             var data = google.visualization.arrayToDataTable(data);
 
             var options = {

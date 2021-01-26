@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Model\Entity\Production;
 use Cake\ORM\TableRegistry;
-use function MongoDB\BSON\toJSON;
 
 /**
  * Productions Controller
@@ -57,10 +56,10 @@ class ProductionsController extends AppController
         if ($this->request->is('post')) {
             $production = $this->Productions->patchEntity($production, $this->request->getData());
             $oldProd = $this->Productions->find()
-                            ->where(['country_id IS' => $production->get('country_id')])
-                            ->andWhere(['month_id IS' => $production->get('month_id')])
-                            ->andWhere(['enable IS' => 1]);
-            foreach ( $oldProd as $row ) {
+                ->where(['country_id IS' => $production->get('country_id')])
+                ->andWhere(['month_id IS' => $production->get('month_id')])
+                ->andWhere(['enable IS' => 1]);
+            foreach ($oldProd as $row) {
                 $row->set(['enable' => false]);
                 $this->Productions->save($row);
             }
@@ -129,13 +128,16 @@ class ProductionsController extends AppController
      */
     public function get()
     {
+        //Get instances of production
         $prods = $this->Productions->find('all')->where(['productions.enable' => 1])->contain(['Countries', 'Months']);
         $array[0][0] = "Months";
-        foreach($prods->getIterator() as $entry) {
-            if(!isset($array[$entry->get('month_id')][0])){
+
+        //Create an array to return
+        foreach ($prods->getIterator() as $entry) {
+            if (!isset($array[$entry->get('month_id')][0])) {
                 $array[$entry->get('month_id')][0] = $entry->get('month')->date->i18nFormat('yyyy-MM');
             }
-            if(!isset($array[0][$entry->get('country_id')])){
+            if (!isset($array[0][$entry->get('country_id')])) {
                 $array[0][$entry->get('country_id')] = $entry->get('country')->name;
             }
             $array[$entry->get('month_id')][$entry->get('country_id')] = $entry->get('coffee');
@@ -145,7 +147,7 @@ class ProductionsController extends AppController
     }
 
     /**
-     * Generate method for countries's production
+     * Generate coffee production
      *
      * @param int[] $periodsID [startMonth,endMonth].
      * @param int[] $countriesID
@@ -159,7 +161,7 @@ class ProductionsController extends AppController
             ->where(['productions.enable' => true])
             ->contain(['Countries', 'Months'], true);
 
-        foreach ($productionsHistory->getIterator() as $row){
+        foreach ($productionsHistory->getIterator() as $row) {
             $row->set(['enable' => false, 'sugar' => 3]);
             $this->Productions->save($row);
         }
@@ -170,13 +172,13 @@ class ProductionsController extends AppController
         $periods = TableRegistry::getTableLocator()->get('Months')->find('all')->getIterator();
 
         //Generate new random values
-        foreach($countries as $country) {
-            foreach($periods as $month) {
+        foreach ($countries as $country) {
+            foreach ($periods as $month) {
                 $item = new Production();
                 $item->set([
-                    'coffee'  => rand(0,2500),
+                    'coffee' => rand(0, 2500),
                     'country' => $country,
-                    'month'   => $month,
+                    'month' => $month,
                     'enable' => true,
                 ]);
                 $this->Productions->save($item);
