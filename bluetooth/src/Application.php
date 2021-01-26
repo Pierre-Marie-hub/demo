@@ -66,7 +66,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 (new TableLocator())->allowFallbackClass(false)
             );
         }
-        if(!isset($_SESSION)) session_start();
+
         /*
          * Only try to load DebugKit in development mode
          * Debug Kit should not be installed on a production system

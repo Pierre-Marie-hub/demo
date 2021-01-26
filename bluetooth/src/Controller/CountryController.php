@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 /**
- * Users Controller
+ * Country Controller
  *
- * @property \App\Model\Table\UsersTable $Users
- * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @property \App\Model\Table\CountryTable $Country
+ * @method \App\Model\Entity\Country[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class UsersController extends AppController
+class CountryController extends AppController
 {
     /**
      * Index method
@@ -18,25 +18,25 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        $country = $this->paginate($this->Country);
 
-        $this->set(compact('users'));
+        $this->set(compact('country'));
     }
 
     /**
      * View method
      *
-     * @param string|null $id User id.
+     * @param string|null $id Country id.
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, [
+        $country = $this->Country->get($id, [
             'contain' => [],
         ]);
 
-        $this->set(compact('user'));
+        $this->set(compact('country'));
     }
 
     /**
@@ -46,58 +46,58 @@ class UsersController extends AppController
      */
     public function add()
     {
-        $user = $this->Users->newEmptyEntity();
+        $country = $this->Country->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $country = $this->Country->patchEntity($country, $this->request->getData());
+            if ($this->Country->save($country)) {
+                $this->Flash->success(__('The country has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('The country could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $this->set(compact('country'));
     }
 
     /**
      * Edit method
      *
-     * @param string|null $id User id.
+     * @param string|null $id Country id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, [
+        $country = $this->Country->get($id, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $country = $this->Country->patchEntity($country, $this->request->getData());
+            if ($this->Country->save($country)) {
+                $this->Flash->success(__('The country has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('The country could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+        $this->set(compact('country'));
     }
 
     /**
      * Delete method
      *
-     * @param string|null $id User id.
+     * @param string|null $id Country id.
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+        $country = $this->Country->get($id);
+        if ($this->Country->delete($country)) {
+            $this->Flash->success(__('The country has been deleted.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The country could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

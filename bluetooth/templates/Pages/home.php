@@ -19,6 +19,7 @@ use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
+use Cake\Routing\Router;
 
 $this->disableAutoLayout();
 
@@ -53,29 +54,43 @@ $cakeDescription = 'mon-petit-cahier.fr';
     <header>
         <div class="container text-center">
             <h1>
-                Welcome to a short demo of CakePHP <?php echo Configure::version() ?> Strawberry (🍓) with GoogleChart
+                Welcome to a short demo of CakePHP with GoogleChart
             </h1>
         </div>
     </header>
+
     <main class="main">
         <div class="container">
             <div class="content">
                 <div class="row">
                     <div class="column">
                         <div class="message default text-center">
-                            <small>This dashboard is made with dummy data</small>
+                            <small>This dashboard is made with dummy data, after add a country or a month, you need to regenarate data.</small>
+                            <br>
+                            <a href="<?=  Router::pathUrl('Productions::generate'); ?>"><button>Generate others dummy data</button></a>
+                            <a href="<?=  Router::pathUrl('Countries::add'); ?>"><button>Add a country</button></a>
+                            <a href="<?=  Router::pathUrl('Months::add'); ?>"><button>Add a month</button></a>
+                            <a href="<?=  Router::pathUrl('Productions::edit'); ?>"><button>Edit values</button></a>
+
                         </div>
                         <div id="url-rewriting-warning" class="alert url-rewriting">
                             <ul>
                                 <li class="bullet problem">
-                                    Source code is here <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/installation.html#url-rewriting">Project's Github</a><br />
+                                    Source code is here <a target="_blank" rel="noopener" href="https://github.com/Pierre-Marie-hub/demo">Project's Github</a><br />
                                 </li>
                             </ul>
                         </div>
                         <?php Debugger::checkSecurityKeys(); ?>
                     </div>
                 </div>
-                <div id="chart_div" style="width: 100%; min-height: 400px;"></div>
+                <div id="chart_div" style="width: 100%; min-height: 400px;">
+                    <center>
+                        <img src="img/loading.gif"/>
+                        <br>
+                        Array is coming
+                    </center>
+
+                </div>
                 <div class="row">
                     <div class="column">
                         <h4>Environment</h4>
@@ -131,6 +146,9 @@ $cakeDescription = 'mon-petit-cahier.fr';
                             <li class="bullet success">
                                 <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/en/tutorials-and-examples/cms/installation.html">Contact us</a>
                             </li>
+                            <li class="bullet success">
+                                <a target="_blank" rel="noopener" href="https://github.com/Pierre-Marie-hub/redeploy">Another repo about Ansible</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -141,4 +159,5 @@ $cakeDescription = 'mon-petit-cahier.fr';
     </main>
 </body>
 <?= $this->Html->script('chart'); ?>
+<?= $this->Html->script('jquery'); ?>
 </html>
